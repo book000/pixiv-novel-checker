@@ -6,17 +6,8 @@ import json
 import requests
 
 
-def search(word: str):
+def search(api, word: str):
     print("search({})".format(word))
-    if not os.path.exists("config.json"):
-        print("config.json not found.")
-        exit(1)
-
-    with open("config.json", "r", encoding="utf-8") as f:
-        config = json.load(f)
-
-    api = AppPixivAPI()
-    api.login(config.get("username"), config.get("password"))
 
     response = api.search_novel(word)
 
@@ -61,6 +52,9 @@ def main():
     with open("searchwords.json", "r", encoding="utf-8") as f:
         searchwords = json.load(f)
 
+    api = AppPixivAPI()
+    api.login(config.get("username"), config.get("password"))
+
     readed = []
     init = True
     if os.path.exists("data.json"):
@@ -77,7 +71,7 @@ def main():
         print("[INFO] Initialize mode")
 
     for word in searchwords:
-        results = search(word)
+        results = search(api, word)
         for result in results:
             novelId = result["id"]
 
