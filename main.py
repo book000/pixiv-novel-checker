@@ -53,7 +53,16 @@ def main():
         searchwords = json.load(f)
 
     api = AppPixivAPI()
-    api.login(config.get("username"), config.get("password"))
+    if os.path.exists("token.json"):
+        with open("token.json", "r", encoding="utf-8") as f:
+            token = json.load(f)
+            token = api.auth(None, None, token["refresh_token"])
+            with open("token.json", "w", encoding="utf-8") as f:
+                f.write(json.dumps(token))
+    else:
+        token = api.login(config.get("username"), config.get("password"))
+        with open("token.json", "w", encoding="utf-8") as f:
+            f.write(json.dumps(token))
 
     readed = []
     init = True
@@ -79,12 +88,15 @@ def main():
                 continue
 
             novelTitle = result["title"]
-            novelDate = result["create_date"].replace("T", " ").replace("+09:00", "")
+            novelDate = result["create_date"].replace(
+                "T", " ").replace("+09:00", "")
             novelTags = list(map(lambda x: x["name"], result["tags"]))
             novelCaption = result["caption"]
             novelCaption = novelCaption.replace("<br />", "\n")
-            novelCaption = re.sub(r"<strong>(.*)</strong>", r"**\1**", novelCaption)
-            novelCaption = re.sub(r"<a href=\"(.*?)\".*?>(.*?)</a>", r"[\2](\1)", novelCaption)
+            novelCaption = re.sub(r"<strong>(.*)</strong>",
+                                  r"**\1**", novelCaption)
+            novelCaption = re.sub(
+                r"<a href=\"(.*?)\".*?>(.*?)</a>", r"[\2](\1)", novelCaption)
             novelUsername = result["user"]["name"]
 
             embed = {

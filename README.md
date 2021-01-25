@@ -26,11 +26,6 @@ python3 main.py
 
 The `config.json` file in the current directory will be read, so change to the root directory of the project in advance before executing.
 
-## Notes
-
-- Since login is not cached, a login notification email will be sent when the application is running.
-  - I want to fix this behavior, but I don't know how to fix it.
-
 ## Warning / Disclaimer
 
 The developer is not responsible for any problems caused by the user using this project.

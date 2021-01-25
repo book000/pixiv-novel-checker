@@ -3,3 +3,4 @@ venv
 config.json
 data.json
 searchwords.json
+token.json
