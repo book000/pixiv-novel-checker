@@ -15,7 +15,14 @@ Search for novels on [Pixiv](https://pixiv.net/) and notify Discord of new novel
 
 ## Configuration
 
-Rewrite `config.sample.json` and rename to `config.json`.
+- Rewrite `config.sample.json` and rename to `config.json`.
+  - `username`: Pixiv username
+  - `password`: Pixiv password
+  - `discord_token`: Discord Bot token
+  - `discord_channel`: Discord Send to channel ID
+- Rewrite `searchwords.sample.json` and rename to `searchwords.json`.
+  - `words`: List of words to search on Pixiv
+  - `mutetags`: List of tags to exclude if they are included in the search results
 
 ## Usage
 

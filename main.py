@@ -73,13 +73,13 @@ def main():
             data = json.load(f)
         readed = data["readed"]
 
-        if searchwords != data["searchwords"]:
+        if searchwords["words"] != data["searchwords"]:
             init = True
             print("[INFO] Initialize mode (Changed searchwords)")
     else:
         print("[INFO] Initialize mode")
 
-    for word in searchwords:
+    for word in searchwords["words"]:
         results = search(api, word)
         for result in results:
             novelId = result["id"]
@@ -98,6 +98,12 @@ def main():
             novelCaption = re.sub(
                 r"<a href=\"(.*?)\".*?>(.*?)</a>", r"[\2](\1)", novelCaption)
             novelUsername = result["user"]["name"]
+
+            readed.append(novelId)
+
+            for mutetag in searchwords["mutetags"]:
+                if mutetag in novelTags:
+                    continue
 
             embed = {
                 "title": "`{word}` -> `{title}`".format(word=word, title=novelTitle, username=novelUsername),
@@ -122,14 +128,13 @@ def main():
 
             if not init:
                 sendMessage(config["discord_channel"], "", embed)
-            readed.append(novelId)
 
     print(readed)
 
     with open("data.json", "w", encoding="utf-8") as f:
         f.write(json.dumps({
             "readed": readed,
-            "searchwords": searchwords
+            "searchwords": searchwords["words"]
         }))
 
 
