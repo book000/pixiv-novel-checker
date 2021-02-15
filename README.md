@@ -11,7 +11,7 @@ Search for novels on [Pixiv](https://pixiv.net/) and notify Discord of new novel
 ## Installation
 
 1. Clone from GitHub repository: `git clone https://github.com/book000/pixiv-novel-checker.git`
-2. Install the dependency package from `requirements.txt`: `pip3 install -r -U requirements.txt`
+2. Install the dependency package from `requirements.txt`: `pip3 install -U -r requirements.txt`
 
 ## Configuration
 
