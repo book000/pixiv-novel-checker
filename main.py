@@ -101,9 +101,13 @@ def main():
 
             readed.append(novelId)
 
+            muted = False
             for mutetag in searchwords["mutetags"]:
                 if mutetag in novelTags:
-                    continue
+                    muted = True
+                    break
+            if muted:
+                continue
 
             embed = {
                 "title": "`{word}` -> `{title}`".format(word=word, title=novelTitle, username=novelUsername),
