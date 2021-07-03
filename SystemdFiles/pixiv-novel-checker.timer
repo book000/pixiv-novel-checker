@@ -1,0 +1,9 @@
+[Unit]
+Description=pixiv-novel-checker
+
+[Timer]
+Unit=pixiv-novel-checker.service
+OnCalendar=*-*-* *:00,30:00
+
+[Install]
+WantedBy=timers.target
