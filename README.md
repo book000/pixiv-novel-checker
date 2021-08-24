@@ -21,7 +21,8 @@ Search for novels on [Pixiv](https://pixiv.net/) and notify Discord of new novel
   - `discord_token`: Discord Bot token
   - `discord_channel`: Discord Send to channel ID
 - Rewrite `searchwords.sample.json` and rename to `searchwords.json`.
-  - `words`: List of words to search on Pixiv
+  - `words`: List of words to search on Pixiv (tag search)
+  - `words`: List of words to search on Pixiv (text search)
   - `mutetags`: List of tags to exclude if they are included in the search results
 
 ## Usage
