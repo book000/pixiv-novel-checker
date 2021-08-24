@@ -6,7 +6,7 @@ After=network.target
 User=root
 Group=root
 WorkingDirectory=%WorkingDirectory%
-ExecStart=%WorkingDirectory%/venv/bin/python -m src
+ExecStart=%WorkingDirectory%/venv/bin/python main.py
 Restart=no
 Type=oneshot
 
