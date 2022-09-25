@@ -4,6 +4,6 @@ cloudscraper==1.2.52
 idna==2.10
 PixivPy==3.5.10
 pyparsing==2.4.7
-requests==2.27.1
+requests==2.28.1
 requests-toolbelt==0.9.1
 urllib3==1.26.5
